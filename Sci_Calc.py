@@ -1,34 +1,36 @@
 e = 2.71828
 π = 3.14159
 
-print("1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n5.Modulus\n6.Floor Division\n7.Exponentiation\n8.Root\n9.e Power\n10.10 Power\n11.Factorial\n12.Percentage\n13.Logarithm\n14.Sine\n15.Cosine\n16.Tangent")
+print("1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n5.Modulus\n6.Floor Division\n7.Exponentiation\n8.Root\n9.e Power\n10.10 Power\n11.Factorial\n12.Percentage\n13.Logarithm\n14.Sine\n15.Cosine\n16.Tangent\n17.ArcSine\n18.ArcCosine\n19.ArcTangent")
 
 c = int(input("Enter the S.No of the Operation you want to use: "))
 
 if(c==4 or c==5 or c==6):
-    a=float(input("Enter the Dividend:"))
-    b=float(input("Enter the Divisor:"))
+    a=float(input("Enter the Dividend: "))
+    b=float(input("Enter the Divisor: "))
 elif(c==7):
-    a=float(input("Enter the base:"))
-    b=float(input(("Enter the power:")))
+    a=float(input("Enter the base: "))
+    b=float(input(("Enter the power: ")))
 elif(c==8):
-    a=float(input("Enter the Base:"))
-    b=float(input("Enter the Root:"))
+    a=float(input("Enter the Base: "))
+    b=float(input("Enter the Root: "))
 elif(c==9 or c==10):
-    a=float(input("Enter the Power:"))
+    a=float(input("Enter the Power: "))
 elif(c==11):
-    a=float(input("Enter the Number:"))
+    a=float(input("Enter the Number: "))
 elif(c==12):
-    a=float(input("How much Percentage:"))
-    b=float(input("Percentage of which Number:"))
+    a=float(input("How much Percentage: "))
+    b=float(input("Percentage of which Number: "))
 elif(c==13):
-    a=float(input("Enter the Number:"))
-    b=float(input("Enter the base for the Logarithm:"))
+    a=float(input("Enter the Number: "))
+    b=float(input("Enter the base for the Logarithm: "))
 elif(c==14 or c==15 or c==16):
-    a=float(input("Enter the angle in Degrees:"))
+    a=float(input("Enter the angle in Degrees: "))
 elif(c==1 or c==2 or c==3):
-    a=float(input("Enter the First Number:"))
-    b=float(input("Enter the Second Number:"))
+    a=float(input("Enter the First Number: "))
+    b=float(input("Enter the Second Number: "))
+elif(c==17 or 18 or 19):
+    a=float(input("Enter any number from -1 to 1: "))
 
 def Factorial(a):
     if a==0 or a==1:
@@ -69,6 +71,39 @@ def Cosine(a):
 def Tangent(a):
     return Sine(a)/Cosine(a)
 
+def ArcSine(a):
+    i=0
+    x=0
+    if(a<-1 or a>1):
+        print(f"{a} is not a valid number.")
+    else:
+        while(i<15):
+            x=x+((Factorial(2*i))/((2**(2*i))*((Factorial(i))**2)*(2*i+1)))*(a**(2*i+1))
+            i=i+1
+        print(f"{x} Radians.")
+        print(f"{x*(180/π)} Degrees.")
+
+def ArcCosine(a):
+    i=0
+    x=0
+    if(a<-1 or a>1):
+        print(f"{a} is not a valid number.")
+    else:
+        while(i<15):
+            x=x+((Factorial(2*i))/((4**i)*((Factorial(i))**2)*(2*i+1)))*(a**(2*i+1))
+            i=i+1
+        print(f"{π/2-x} Radians.")
+        print(f"{(π/2-x)*(180/π)} Degrees.")
+
+def ArcTangent(a):
+    i=0
+    x=0
+    while(i<15):
+        x=x+(((-1)**i)*a**(2*i+1))/(2*i+1)
+        i=i+1
+    print(f"{x} Radians.")
+    print(f"{(x)*(180/π)} Degrees.")
+
 match c:
     case 1: print(a+b)
     case 2: print(a-b)
@@ -86,4 +121,7 @@ match c:
     case 14: print(Sine(a))
     case 15: print(Cosine(a))
     case 16: print(Tangent(a))
+    case 17: print(ArcSine(a))
+    case 18: print(ArcCosine(a))
+    case 19: print(ArcTangent(a))
     case _: print("Nothing was selected")
